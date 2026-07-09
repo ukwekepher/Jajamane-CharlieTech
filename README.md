@@ -17,9 +17,9 @@
 
 🔗 **Visit Website**
 
-> https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/
+> https:/github.com/ukwekepher/jajamane-CharlieTech
 
-*(Replace with your live GitHub Pages URL.)*
+
 
 ---
 
