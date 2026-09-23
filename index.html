@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-
+<title>
     <!-- Character Encoding -->
 JAJAMANE & CHARLIE TECH | Web Developer • AI Content Creator • Graphic Designer
 </title>
@@ -111,7 +111,7 @@ content="website">
 
         <div class="loader-bar">
 
-            
+            <span></span>
 
         </div>
 
@@ -185,7 +185,7 @@ content="website">
 
         <h3>Founded by Ukwe Kepher</h3>
 
-        <h2>
+        <h2 class="typed-text">
             AI Content Creator |
             Web Developer |
             Graphic Designer |
@@ -205,7 +205,7 @@ content="website">
                 View Portfolio
             </a>
 
-            <a href="cv/UKWEKEPHERAMAECH cv 001.pdf"
+            <a href="cv/mycv.pdf"
                download
                 class="btn">
                 Download CV
@@ -290,11 +290,17 @@ experiences.
 
 <h2>Our Expertise</h2>
 
+<p class="skills-intro">
+    Creative thinking, technical skill, and practical solutions for every digital project.
+</p>
+
 <div class="skills-container">
 
 <div class="skill-box"
      data-aos="zoom-in"
      data-aos-delay="100">
+
+<i class="fa-solid fa-code"></i>
     
 <h3>Web Development</h3>
 
@@ -628,6 +634,41 @@ GitHub
      data-aos="fade-left"
      data-aos-delay="350">
 
+<img src="fliers/Screenshot_(355).png_2K_20260923161010.jpeg" alt="Business Website">
+
+<h3>Business Website</h3>
+
+<p>
+
+Corporate business website with
+modern UI and responsive layout.
+
+</p>
+
+<div class="project-buttons">
+
+<a href="https:" target="_blank" class="btn">
+
+View
+
+</a>
+
+<a href="https://www.urbanedgeng.com.ng/" target="_blank" class="btn2">
+
+Website
+
+</a>
+
+</div>
+
+</div>
+
+
+
+<div class="project-card"
+     data-aos="fade-left"
+     data-aos-delay="350">
+
 <img src="thumbnails/tgwim thumbline.png" alt="Business Website">
 
 <h3>Business Website</h3>
@@ -656,7 +697,6 @@ GitHub
 </div>
 
 </div>
-
 </div>
 
 </section> 
@@ -830,7 +870,7 @@ GitHub
        
         <div class="video-label">
           ▶ Watch Testimonial
-       </div>
+       </div>s
     </a>
     
 
@@ -1004,7 +1044,7 @@ our clients.
 
             <p>Download My CV</p>
 
-            <a href="https://drive.google.com/file/d/1NdAwdXdjjHV9Rl7rx4q0zo82Np-3rtQ0/view?usp=sharing" download>
+            <a href="https://drive.google.com/file/d/174RsdgUW2HMeqbqtopxWXSqOqF1csqrK/view?usp=sharing" download>
                 Download Resume
             </a>
 
@@ -1299,6 +1339,21 @@ AOS.init({
     offset: 120
 
 });
+
+const skillCards = document.querySelectorAll(".skill-box");
+
+if (skillCards.length && "IntersectionObserver" in window) {
+    const skillObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    skillCards.forEach(card => skillObserver.observe(card));
+}
 </script>
 <!-- ===========================
         SWIPER
@@ -1313,36 +1368,60 @@ AOS.init({
 <script>
 
 /*=========================
+    TYPED TEXT EFFECT
+==========================*/
+const typedText = document.querySelector(".typed-text");
+
+if (typedText && typeof Typed !== "undefined") {
+    new Typed(".typed-text", {
+        strings: [
+            "AI Content Creator",
+            "Web Developer",
+            "Graphic Designer",
+            "Video Editor"
+        ],
+        typeSpeed: 80,
+        backSpeed: 40,
+        backDelay: 1200,
+        loop: true,
+        showCursor: true,
+        cursorChar: "|"
+    });
+}
+
+/*=========================
     BACK TO TOP BUTTON
 ==========================*/
 
 const topBtn = document.getElementById("topBtn");
 
-window.addEventListener("scroll", function () {
+if (topBtn) {
+    window.addEventListener("scroll", function () {
 
-    if (window.scrollY > 300) {
+        if (window.scrollY > 300) {
 
-        topBtn.classList.add("show");
+            topBtn.classList.add("show");
 
-    } else {
+        } else {
 
-        topBtn.classList.remove("show");
+            topBtn.classList.remove("show");
 
-    }
-
-});
-
-topBtn.addEventListener("click", function () {
-
-    window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
+        }
 
     });
 
-});
+    topBtn.addEventListener("click", function () {
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+    });
+}
 
 
 /*=========================
@@ -1353,7 +1432,11 @@ window.addEventListener("load", function(){
 
     setTimeout(function(){
 
-        document.getElementById("loader").classList.add("hide");
+        const loader = document.getElementById("loader");
+
+        if (loader) {
+            loader.classList.add("hide");
+        }
 
     }, 2200);
 
